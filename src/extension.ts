@@ -4,11 +4,6 @@ import * as vscode from "vscode";
 import { getCurrentLine, getWords, findImportModule, readModuleFile } from "./utils";
 import * as path from "path";
 
-import * as md from "markdown-it";
-const highlightjs = require("markdown-it-highlightjs");
-
-const cssbeautify = require("cssbeautify");
-
 const triggerBeforeCurrentWord = (
     document: vscode.TextDocument,
     position: vscode.Position
