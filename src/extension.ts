@@ -4,6 +4,11 @@ import * as vscode from "vscode";
 import { getCurrentLine, getWords, findImportModule, readModuleFile } from "./utils";
 import * as path from "path";
 
+import * as md from "markdown-it";
+const highlightjs = require("markdown-it-highlightjs");
+
+const cssbeautify = require("cssbeautify");
+
 const triggerBeforeCurrentWord = (
     document: vscode.TextDocument,
     position: vscode.Position
@@ -40,8 +45,12 @@ export function activate(context: vscode.ExtensionContext) {
         async provideHover(document, position, token) {
             // const word = document.getText(document.getWordRangeAtPosition(position));
             // const importModule = findImportModule(document.getText(), )
+            const r = document.getWordRangeAtPosition(position)?.end;
+            if (!r) {
+                return;
+            }
             const line = getCurrentLine(document, position);
-            const words = getWords(line, position);
+            const words = getWords(line, r);
             if (words === "" || words.indexOf(".") === -1) {
                 return;
             }
@@ -58,10 +67,12 @@ export function activate(context: vscode.ExtensionContext) {
             );
 
             // Find the specific class being referenced
+            const cbegin = contents.indexOf(`.${field}`);
+            const cend = contents.indexOf("}", cbegin);
+            const text = contents.substring(cbegin, cend + 1);
 
-            console.log(contents);
-
-            return new vscode.Hover("hi there. import module is: " + importModule);
+            const formatted = "```css\n" + text + "\n```";
+            return new vscode.Hover(formatted);
         },
     });
     context.subscriptions.push(disposable);
