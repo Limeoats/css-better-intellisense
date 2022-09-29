@@ -1,5 +1,3 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { getCurrentLine, getWords, findImportModule, readModuleFile } from "./utils";
 import * as path from "path";
@@ -27,19 +25,9 @@ const isStyle = (document: vscode.TextDocument, position: vscode.Position): bool
     return true;
 };
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log(
-        'Congratulations, your extension "css-better-intellisense" is now active!'
-    );
-
     let disposable = vscode.languages.registerHoverProvider("typescriptreact", {
         async provideHover(document, position, token) {
-            // const word = document.getText(document.getWordRangeAtPosition(position));
-            // const importModule = findImportModule(document.getText(), )
             const r = document.getWordRangeAtPosition(position)?.end;
             if (!r) {
                 return;
