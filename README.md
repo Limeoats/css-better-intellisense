@@ -2,4 +2,4 @@
 
 ### License
 
-This project is under the [Apache License](https://github.com/Limeoats/css-modules-better-intellisense/blob/master/LICENSE.md).
+This project is under the [MIT License](https://github.com/Limeoats/css-modules-better-intellisense/blob/main/LICENSE.md).
