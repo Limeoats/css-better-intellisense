@@ -3,7 +3,8 @@
   "displayName": "CSS Modules Better Intellisense",
   "description": "",
   "icon": "images/icon.png",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "Limeoats",
   "engines": {
     "vscode": "^1.71.0"
   },
