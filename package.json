@@ -1,7 +1,8 @@
 {
   "name": "css-modules-better-intellisense",
-  "displayName": "css-modules-better-intellisense",
+  "displayName": "CSS Modules Better Intellisense",
   "description": "",
+  "icon": "images/icon.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.71.0"
